@@ -2967,6 +2967,15 @@ function scAssign(st){
   for(var it=0;it<3;it++)adj.forEach(function(set){
     var u={};set.forEach(function(l){(sp[l]||[]).forEach(function(v){u[v]=1;});});var uk=Object.keys(u);
     if(uk.length===1)set.forEach(function(l){if(!sp[l]){sp[l]=[+uk[0]];derived[l]=true;}});});
+  /* tronçon sans spool resté isolé par un trou de dessin (cartouche, repère) : spool du tronçon voisin le plus proche (≤ 60 px), signalé incertain */
+  (function(){var R=Math.max(3,Math.round(60*s/G)),px={},k;
+    for(k=0;k<lab.length;k++){var l=lab[k];if(l&&!sp[l]){(px[l]=px[l]||[]).push(k);}}
+    Object.keys(px).forEach(function(l){var best=null,second=1e9,A=px[l],j,seen={};
+      for(j=0;j<A.length;j+=3){var x0=A[j]%gw,y0=(A[j]-x0)/gw;
+        for(var yy=Math.max(0,y0-R);yy<=Math.min(gh-1,y0+R);yy++)for(var xx=Math.max(0,x0-R);xx<=Math.min(gw-1,x0+R);xx++){var l2=lab[yy*gw+xx];if(!l2||l2===+l||!sp[l2])continue;var dd=(xx-x0)*(xx-x0)+(yy-y0)*(yy-y0);if(!(l2 in seen)||dd<seen[l2])seen[l2]=dd;}}
+      var ks=Object.keys(seen).sort(function(a,b){return seen[a]-seen[b];});
+      if(ks.length&&(ks.length===1||seen[ks[1]]>seen[ks[0]]*1.6))best=ks[0];
+      if(best){sp[l]=sp[best].slice();derived[l]=true;}});})();
   var orph=[];st.forEach(function(q,i){if(q.k==='S'&&q.use&&!q.manual&&!(comp[i]&&sp[comp[i]]))orph.push(+q.n||0);});
   orph=orph.filter(function(v){var c=0;st.forEach(function(q,i){if(q.k==='S'&&q.use&&(+q.n||0)===v&&comp[i])c++;});return !c;});
   st.forEach(function(q,i){if(q.k==='S'||q.spm)return;

@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 3.7.1
+- Spools : un tronçon de tuyau séparé du reste par un trou du dessin (cartouche, repère) reprend le spool du tronçon voisin le plus proche (≤ 60 px), signalé en orange. Corrige SW4 sans spool (ISO 14/40). Soudure FW douteuse : repère du spool inférieur.
+
 ## 3.7.0
 - Lecture des numéros manuscrits réentraînée sur 27 pages relues à l'œil (≈360 tampons) : chiffres décrits sur 14×14 au lieu de 6×6, nouveau réseau, nouveau classement SW/FW. Numéros justes sur des pages jamais vues : 72 % → 85 %. Données d'apprentissage et scripts dans le dossier apprentissage/.
 
