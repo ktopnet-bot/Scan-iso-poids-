@@ -2,6 +2,12 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.0.0
+- Bouton « ✦ Calculer les spools automatiquement (IA) » par page : l'IA lit le dessin (liste, cotes, extrémités), répartit pièces et tubes par spool, avec cotes en expression et extrémités (bride SO, coude SW, piquage…). Résultat à vérifier ligne par ligne. Disponible uniquement dans la version ouverte depuis claude.ai (pas sur GitHub).
+
+## 3.9.0
+- Poids et peinture par spool : bouton « Répartir par spool » sur chaque ligne de la liste (tube ou accessoire) : une ligne par spool de la page, avec rappel du total de la liste, du réparti et du reste. Avertissement avant d'ajouter des lignes sans spool.
+
 ## 3.8.0
 - Revue du scan : tampons triés par numéro de soudure (SW1, SW2, FW3, SW4…), spools en tête.
 - Liste de matériel : classe de bride lue correctement (3000# n'était plus pris pour 300#), vanne XV (type boisseau), boulonnerie (tiges + écrous → jeux de boulons selon la bride).
