@@ -355,8 +355,8 @@ label.f input,label.f select,.svc select,.svbar input,.svbar select{border-radiu
 .wch .wcnt{margin-left:auto;font-size:12px;font-weight:600}
 .wch .wnone{font-size:12px;opacity:.75}
 
-#scanbtn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff;cursor:pointer;padding:0;backdrop-filter:blur(6px)}
-#scanbtn:hover{background:rgba(255,255,255,.26)}
+#scanbtn,#cmdbtn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff;cursor:pointer;padding:0;backdrop-filter:blur(6px)}
+#scanbtn:hover,#cmdbtn:hover{background:rgba(255,255,255,.26)}
 #scan{position:fixed;inset:0;z-index:62;background:rgba(8,20,28,.55);display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
 #scan.on{display:flex}
 #scan .hbox{background:var(--panel);color:var(--ink);width:min(980px,100%);max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px 18px 26px;box-shadow:0 -10px 40px rgba(0,0,0,.35)}
@@ -403,7 +403,7 @@ label.f input,label.f select,.svc select,.svbar input,.svbar select{border-radiu
 <body>
 <div class="wrap">
   <header class="title-block">
-    <div class="hl"><h1>Calcul poids tuyauterie</h1><div class="hbtns"><button type="button" id="lang" aria-label="Langue / Language" title="Français / English"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg><span id="langlbl">FR</span></button><button type="button" id="themebtn" aria-label="Thème clair ou sombre" title="Thème clair / sombre"></button><button type="button" id="scanbtn" aria-label="Scanner un isométrique" title="Scanner un isométrique (PDF / photo)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M7 12h10"/></svg></button><button type="button" id="helpbtn" aria-label="Aide" title="Aide">?</button></div></div>
+    <div class="hl"><h1>Calcul poids tuyauterie</h1><div class="hbtns"><button type="button" id="lang" aria-label="Langue / Language" title="Français / English"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg><span id="langlbl">FR</span></button><button type="button" id="themebtn" aria-label="Thème clair ou sombre" title="Thème clair / sombre"></button><button type="button" id="cmdbtn" aria-label="Commande" title="Commande en langage courant (IA)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></button><button type="button" id="scanbtn" aria-label="Scanner un isométrique" title="Scanner un isométrique (PDF / photo)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M7 12h10"/></svg></button><button type="button" id="helpbtn" aria-label="Aide" title="Aide">?</button></div></div>
     <div class="ref">ASME B36.10M / B36.19M<br>ASME B16.9 · B16.5 · kg<br>v3.6 · Kamel Nasralli</div>
   </header>
   <div id="projbar"></div>
@@ -676,7 +676,7 @@ var KEY3='cpt.poids.v3';
 var PR={cur:null,list:[],trash:[]};
 var TIK=['code','doc','rev','sub','svc','cls','sys'];
 var TBK=['p1','p2','p3','code','doc','rev','sub','svc','cls','sys'];
-function defData(){return {mat:7850,matK:'cs',rho:1000,fluK:'eau',insOn:false,insT:50,insRho:100,tb:{},ti:{},sv:{},sd:{},sw:{},wl:[],items:[],seed:false,open:true};}
+function defData(){return {mat:7850,matK:'cs',rho:1000,fluK:'eau',insOn:false,insT:50,insRho:100,tb:{},ti:{},np:{},sv:{},sd:{},sw:{},wl:[],items:[],seed:false,open:true};}
 function exampleItems(){return [
     {id:uid(),cat:'tube',sub:'',nps:8,sch:'STD',nps2:5,cls:150,len:'6',qty:3,iso:'ISO-001',spool:'1',over:'',name:'',w:''},
     {id:uid(),cat:'coude',sub:'90lr',nps:8,sch:'STD',nps2:5,cls:150,len:'',qty:2,iso:'ISO-001',spool:'1',over:'',name:'',w:''},
@@ -685,8 +685,8 @@ function exampleItems(){return [
     {id:uid(),cat:'te',sub:'egal',nps:10,sch:'40',nps2:5,cls:150,len:'',qty:1,iso:'ISO-002',spool:'1',over:'',name:'',w:''},
     {id:uid(),cat:'vanne',sub:'gate',nps:8,sch:'STD',nps2:5,cls:150,len:'',qty:1,iso:'ISO-002',spool:'1',over:'',name:'',w:''}
   ];}
-function snap(){return {mat:S.mat,matK:S.matK,rho:S.rho,fluK:S.fluK,insOn:S.insOn,insT:S.insT,insRho:S.insRho,tb:S.tb,ti:S.ti,sv:S.sv,sd:S.sd,sw:S.sw,wl:S.wl,items:S.items,seed:S.seed,open:S.open};}
-function applyData(d){var k,df=defData();for(k in df)S[k]=(d&&d[k]!=null)?d[k]:df[k];if(!Array.isArray(S.items))S.items=[];if(!S.tb||typeof S.tb!=='object')S.tb={};if(!S.ti||typeof S.ti!=='object')S.ti={};if(!S.sv||typeof S.sv!=='object')S.sv={};if(!S.sd||typeof S.sd!=='object')S.sd={};if(!S.sw||typeof S.sw!=='object')S.sw={};if(!Array.isArray(S.wl))S.wl=[];S.items.forEach(fixItem);}
+function snap(){return {mat:S.mat,matK:S.matK,rho:S.rho,fluK:S.fluK,insOn:S.insOn,insT:S.insT,insRho:S.insRho,tb:S.tb,ti:S.ti,np:S.np,sv:S.sv,sd:S.sd,sw:S.sw,wl:S.wl,items:S.items,seed:S.seed,open:S.open};}
+function applyData(d){var k,df=defData();for(k in df)S[k]=(d&&d[k]!=null)?d[k]:df[k];if(!Array.isArray(S.items))S.items=[];if(!S.tb||typeof S.tb!=='object')S.tb={};if(!S.ti||typeof S.ti!=='object')S.ti={};if(!S.np||typeof S.np!=='object')S.np={};if(!S.sv||typeof S.sv!=='object')S.sv={};if(!S.sd||typeof S.sd!=='object')S.sd={};if(!S.sw||typeof S.sw!=='object')S.sw={};if(!Array.isArray(S.wl))S.wl=[];S.items.forEach(fixItem);}
 function curProj(){for(var i=0;i<PR.list.length;i++)if(PR.list[i].id===PR.cur)return PR.list[i];return null;}
 function findProj(id){for(var i=0;i<PR.list.length;i++)if(PR.list[i].id===id)return PR.list[i];return null;}
 function persist(){
@@ -840,6 +840,7 @@ function flgSurf(ix,cls){
   return (P/4*(D*D-od*od)+P*D*t+P*od*(L-t))/1e6; /* une face, la tranche et le col */
 }
 function valveSurf(ix,cls,type){return (VALVE_KS[type]||3)*Math.PI*NPS[ix].od/1000*valveFF(ix,cls)/1000;}
+function paintOff(it){var n=S.np;if(!n)return false;return !!(n.all||(n.iso&&n.iso[it.iso||'Sans ISO'])||(n.mk&&n.mk[it.mk||'cs']));}
 function calc(it){MATX=itemRho(it);try{return calc0(it);}finally{MATX=null;}}
 function calc0(it){
   var o={surf:0,usurf:0,kind:'acc',unit:0,uLabel:'kg',mult:1,metal:0,content:0,insul:0,warn:'',leq:0,auto:0,P:null};
@@ -883,7 +884,7 @@ function calc0(it){
   o.unit=ov>0?ov:uM;
   o.metal=o.unit*o.mult;o.content=uC*o.mult;o.insul=uI*o.mult;o.leq=uL*o.mult;
   if(it.cat==='libre'){o.unit=num(it.w);o.metal=o.unit*o.mult;}
-  var ovs=num(it.overS);o.usurf=ovs>0?ovs:uS;o.surf=o.usurf*o.mult;
+  var ovs=num(it.overS);o.usurf=ovs>0?ovs:uS;o.surf=o.usurf*o.mult;if(paintOff(it)){o.usurf=0;o.surf=0;}
   var wa=it.cat==='tube'?((it.e1&&it.e1!=='none'?1:0)+(it.e2&&it.e2!=='none'?1:0)):0,ws=String(it.wj==null?'':it.wj).trim();
   o.wAuto=wa;o.wj=ws!==''&&isFinite(num(ws))?Math.max(0,Math.round(num(ws))):wa;o.wd=(it.cat!=='libre'&&NPS[ix])?NPS[ix].v:0;
   o.wn=o.wj*Math.max(0,qty);o.wi=o.wn*o.wd;
@@ -2730,6 +2731,81 @@ function scStamps(cv){
 /* ===== Registre des soudures : atelier (SW) et chantier (FW) ===== */
 var WK={SW:{tab:'sws',fr:'Soudure atelier (SW)',en:'Shop welds (SW)',sub:'Soudures de préfabrication, réalisées à l\'atelier.',sube:'Prefabrication welds, made in the shop.'},
         FW:{tab:'fws',fr:'Soudure chantier (FW)',en:'Field welds (FW)',sub:'Soudures de montage, réalisées sur chantier.',sube:'Erection welds, made on site.'}};
+
+/* ---- commande en langage courant (IA si disponible, sinon règles locales) ---- */
+var CMD_MK={inox:['s316','s304'],carbone:['cs']};
+function cmdNorm(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+function cmdIsos(){var a=[];S.items.forEach(function(it){var k=it.iso||'Sans ISO';if(a.indexOf(k)<0)a.push(k);});return a;}
+function cmdLocal(text){
+  var t=cmdNorm(text),acts=[],isos=cmdIsos().filter(function(k){return t.indexOf(cmdNorm(k))>=0;}),mats=[];
+  if(/inox|316|304|stainless/.test(t))mats=mats.concat(CMD_MK.inox);
+  if(/carbone|carbon\b/.test(t))mats=mats.concat(CMD_MK.carbone);
+  if(/peinture|paint/.test(t)){
+    var off=/(pas|sans|ne\s.*pas|plus|supprim|enlev|exclu|desactiv|inutile|sans besoin|no\b|without)/.test(t)&&!/(remet|reactiv|reprend|calcule\s+(de|a)\s+nouveau)/.test(t);
+    var all=/(tous|toutes|partout|l'ensemble|all)/.test(t)||(!isos.length&&!mats.length);
+    if(isos.length)isos.forEach(function(k){acts.push({op:'paint',value:!off,iso:k});});
+    else if(mats.length)mats.forEach(function(m){acts.push({op:'paint',value:!off,mat:m});});
+    else if(all)acts.push({op:'paint',value:!off});
+  }
+  return acts;
+}
+function cmdDescribe(a){
+  var who=a.iso?('ISO '+a.iso):a.mat?(scT('matériau ','material ')+a.mat):scT('tout le projet','whole project');
+  if(a.op==='paint')return (a.value?scT('Calculer','Compute'):scT('Ne pas calculer','Do not compute'))+scT(' la surface de peinture : ',' paint surface: ')+who;
+  if(a.op==='set')return scT('Mettre ','Set ')+a.field+' = '+a.value+' : '+who+(a.cat?' ('+a.cat+')':'');
+  return JSON.stringify(a);
+}
+function cmdApply(acts){
+  var n=0;S.np=S.np||{};S.np.iso=S.np.iso||{};S.np.mk=S.np.mk||{};
+  acts.forEach(function(a){
+    if(a.op==='paint'){
+      if(a.iso){if(a.value)delete S.np.iso[a.iso];else S.np.iso[a.iso]=true;}
+      else if(a.mat){if(a.value)delete S.np.mk[a.mat];else S.np.mk[a.mat]=true;}
+      else{if(a.value){S.np.all=false;S.np.iso={};S.np.mk={};}else S.np.all=true;}
+      n++;
+    }else if(a.op==='set'&&/^(sch|cls|mk)$/.test(a.field)){
+      S.items.forEach(function(it){
+        if(a.iso&&(it.iso||'Sans ISO')!==a.iso)return;if(a.mat&&it.mk!==a.mat)return;if(a.cat&&it.cat!==a.cat)return;
+        var v=a.value;if(a.field==='cls')v=+v;if(a.field==='sch'&&!SCHS.some(function(x){return x.k===String(v);}))return;if(a.field==='mk'&&!MATS.some(function(m){return m[0]===v;}))return;
+        it[a.field]=v;n++;});
+    }
+  });
+  save();render();toast(n+scT(' modification(s) appliquée(s)',' change(s) applied'));return n;
+}
+function cmdAI(text){
+  if(!(window.claude&&window.claude.use))return Promise.resolve(null);
+  return window.claude.use('sample').then(function(sm){
+    if(!sm)return null;
+    var pr='Tu pilotes une application de calcul de poids et de surface de peinture de tuyauterie. Traduis la demande en actions JSON.\n'+
+      'Réponds UNIQUEMENT par du JSON : {"actions":[...],"note":"phrase courte en français"}.\n'+
+      'Actions possibles :\n{"op":"paint","value":false|true,"iso":"nom ISO ou omis","mat":"s316|s304|cs ou omis"} (value=false : ne pas calculer la peinture ; sans iso ni mat = tout le projet)\n'+
+      '{"op":"set","field":"sch"|"cls"|"mk","value":"...","iso":"optionnel","mat":"optionnel","cat":"optionnel (tube,coude,te,red,fond,bride,vanne,forge,olet,boulon)"}\n'+
+      'ISO existants : '+JSON.stringify(cmdIsos())+'. Matériaux : s316 (inox 316), s304 (inox 304), cs (acier carbone). Schedules : '+SCHS.map(function(x){return x.k;}).join(',')+'.\n'+
+      'Si la demande est impossible avec ces actions, renvoie {"actions":[],"note":"explication"}.\nDemande : '+text;
+    return sm.json(pr,{modelTier:'quick',cache:false}).then(function(r){return r&&Array.isArray(r.actions)?r:null;}).catch(function(){return null;});
+  }).catch(function(){return null;});
+}
+function cmdOpen(){
+  var d=document.createElement('div');d.className='cfm';var act=null;
+  var rules=[];if(S.np){if(S.np.all)rules.push(scT('Peinture désactivée pour tout le projet','Paint disabled for the whole project'));Object.keys(S.np.iso||{}).forEach(function(k){rules.push(scT('Sans peinture : ISO ','No paint: ISO ')+k);});Object.keys(S.np.mk||{}).forEach(function(k){rules.push(scT('Sans peinture : matériau ','No paint: material ')+k);});}
+  d.innerHTML='<div class="cfmb" role="dialog" aria-modal="true" style="max-width:460px"><p><b>'+scT('Commande en langage courant','Plain-language command')+'</b></p>'+
+    '<p class="note" style="font-size:13px;margin:0 0 8px">'+scT('Exemples : « ne pas calculer la peinture des inox », « pas de peinture pour ISO-003 », « mettre le schedule 40S à l\'ISO-002 ». ','Examples: "no paint on stainless", "no paint for ISO-003". ')+((window.claude&&window.claude.use)?scT('(IA Claude active)','(Claude AI on)'):scT('(règles locales : peinture uniquement hors IA)','(local rules: paint only without AI)'))+'</p>'+
+    '<textarea id="cmdt" rows="3" style="width:100%;box-sizing:border-box;font:inherit;padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink)"></textarea>'+
+    '<div id="cmdr" style="margin:8px 0;font-size:14px"></div>'+(rules.length?'<p class="note" style="font-size:13px;margin:0 0 8px">'+scT('Règles actives : ','Active rules: ')+esc(rules.join(' · '))+' <button type="button" class="btn" data-c="r" style="padding:2px 8px">'+scT('Effacer','Clear')+'</button></p>':'')+
+    '<div class="cfma"><button type="button" class="btn" data-c="0">'+scT('Fermer','Close')+'</button><button type="button" class="btn primary" data-c="go">'+scT('Interpréter','Interpret')+'</button></div></div>';
+  d.addEventListener('click',function(e){var c=e.target.dataset&&e.target.dataset.c;if(c===undefined&&e.target!==d)return;
+    var R=d.querySelector('#cmdr');
+    if(c==='0'||e.target===d){d.remove();return;}
+    if(c==='r'){S.np={};save();render();d.remove();toast(scT('Règles effacées','Rules cleared'));return;}
+    if(c==='go'){var tx=d.querySelector('#cmdt').value.trim();if(!tx)return;R.textContent='…';
+      cmdAI(tx).then(function(r){var a=r?r.actions:cmdLocal(tx),note=r&&r.note?r.note:'';act=a;
+        if(!a.length){R.textContent=note||scT('Je n\'ai pas compris : précisez (ex. « pas de peinture pour ISO-003 »).','Not understood: please be more specific.');return;}
+        R.innerHTML=(note?'<div>'+esc(note)+'</div>':'')+'<ul style="margin:6px 0 6px 18px;padding:0">'+a.map(function(x){return '<li>'+esc(cmdDescribe(x))+'</li>';}).join('')+'</ul><button type="button" class="btn primary" data-c="ok">'+scT('Appliquer','Apply')+'</button>';});return;}
+    if(c==='ok'&&act){cmdApply(act);d.remove();}
+  });
+  document.body.appendChild(d);
+}
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#cmdbtn'))cmdOpen();});
 function askConfirm(msg,ok,cb){
   var d=document.createElement('div');d.className='cfm';
   d.innerHTML='<div class="cfmb" role="alertdialog" aria-modal="true"><p>'+esc(msg)+'</p><div class="cfma"><button type="button" class="btn" data-c="0">'+scT('Annuler','Cancel')+'</button><button type="button" class="btn danger" data-c="1">'+esc(ok)+'</button></div></div>';
@@ -3088,11 +3164,13 @@ function scMap(r){
   var t=(r.desc||'').toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
   var it=blank(),note='',ix=scNdIx(r.nd),ix2=scNdIx(r.nd2),q=scQty(r.qte),cat='';
   it.mk=/316/.test(t)?'s316':/304/.test(t)?'s304':'cs';
-  var cls=/\b(150|300|600|900|1500)\s*[#FfHh]?/.exec(t.replace(/B16[.-]\d+/g,'').replace(/B36[.-]\d+/g,''));if(cls)it.cls=+cls[1];
+  var cls=/\b(150|300|600|900|1500)(?![0-9])\s*[#FfHh]?/.exec(t.replace(/B16[.-]\d+/g,'').replace(/B36[.-]\d+/g,''));if(cls)it.cls=+cls[1];
   var rt=/\b(2000|3000|6000|9000)\b/.exec(t);if(rt)it.rt=+rt[1];
   var sch=scSchKey(t);if(sch)it.sch=sch;
   var forged=/\bSW\b|\bNPT|\bTHD|B16[.-]11|\b(3000|6000)\b/.test(t)&&!/\bBW\b/.test(t);
-  if(/SUPP|SUPPORT|^XV|TIGE|GOUJON|ECROU|STUD|JOINT|GASKET|BOULON/.test(t)||(!/[A-Z]{4}/.test(t)))return {ok:false,note:scT('Non géré (support, boulonnerie, joint, repère)','Not handled (support, bolting, gasket, tag)'),item:null,nd:ix,nd2:ix2,q:q};
+  if(/^\s*XV\b/.test(t)&&ix>=0){it.cat='vanne';it.sub='ball';it.nps=ix;it.qty=(isFinite(q)&&q>0)?Math.round(q):1;return {ok:true,note:scT('Vanne XV : type boisseau supposé, à vérifier','XV valve: ball type assumed, please check'),item:it,nd:ix,nd2:ix2,q:q};}
+  if(/TIGE|GOUJON|STUD/.test(t)&&/ECROU|NUT|\bTIGE\b|GOUJON|STUD/.test(t)){it.cat='boulon';it._bq=(isFinite(q)&&q>0)?q:0;return {ok:true,note:scT('Boulonnerie : taille et classe prises sur la bride de la liste','Bolting: size and class taken from the flange in the list'),item:it,nd:0,nd2:-1,q:q};}
+  if(/SUPP|SUPPORT|JOINT|GASKET|BOULON/.test(t)||(!/[A-Z]{4}/.test(t)))return {ok:false,note:scT('Non géré (support, boulonnerie, joint, repère)','Not handled (support, bolting, gasket, tag)'),item:null,nd:ix,nd2:ix2,q:q};
   if(/OLET/.test(t)){cat='olet';it.sub=/WELDOLET/.test(t)?'weld':/THREAD/.test(t)?'thr':'sock';}
   else if(/BRIDE|FLANGE/.test(t)){cat='bride';it.sub=/\bWN\b|COLLERETTE/.test(t)?'WN':/\bSW\b/.test(t)?'SW':/\bTH\b|FILET/.test(t)?'TH':/\bBL\b|PLEINE|BLIND/.test(t)?'BL':/\bLJ\b/.test(t)?'LJ':'SO';}
   else if(/PAPILLON|BUTTERFLY/.test(t)){cat='vanne';it.sub=/\bLUG\b|OREILLE/.test(t)?'lug':'bfly';}
@@ -3213,6 +3291,10 @@ function scReadPage0(canvas,label,res){
     });
   }).then(function(rws){
     res.rows=rws.map(function(r){var m=scMap(r);return {id:r.id,sec:r.sec,desc:r.desc,ndTxt:r.nd+(r.nd2?'x'+r.nd2:''),qteTxt:r.qte,ok:m.ok,note:m.note,item:m.item,ndOk:m.nd>=0,use:!!(m.ok&&m.item&&(m.nd>=0)),spool:''};});
+    res.rows.forEach(function(r){if(r.item&&r.item.cat==='vanne'&&/^\s*XV\b/i.test(r.desc||'')){var o2=res.rows.filter(function(f){return f!==r&&f.item&&f.item.cat==='vanne'&&f.use;})[0]||res.rows.filter(function(f){return f!==r&&f.item&&f.use;})[0];if(o2)r.item.mk=o2.item.mk;}});
+    res.rows.forEach(function(r){if(r.item&&r.item.cat==='boulon'){var fl=res.rows.filter(function(f){return f.item&&f.item.cat==='bride'&&f.use;})[0],bq=r.item._bq;delete r.item._bq;
+      if(fl){r.item.nps=fl.item.nps;r.item.cls=fl.item.cls;var bs=boltSet(r.item.nps,r.item.cls);r.item.qty=bq>0?Math.max(1,Math.round(bq/bs.n)):1;r.ndOk=true;r.use=true;r.note+=' · '+bq+scT(' goujons ÷ ',' studs ÷ ')+bs.n+scT(' par joint = ',' per joint = ')+r.item.qty+scT(' joint(s)',' joint(s)');}
+      else{r.use=false;r.ndOk=false;r.note=scT('Boulonnerie : aucune bride dans la liste, à saisir à la main','Bolting: no flange in the list, enter by hand');}}});
     return res;
   });
 }
@@ -3268,7 +3350,7 @@ function scStampsHTML(p,pi){
   var wr=scStCheck(p);
   h+=wr.length?'<div class="scnote">⚠ '+esc(wr.join(' · '))+'</div>':'<div class="scok">✓ '+scT('Numérotation cohérente (1 à N sans trou ni doublon).','Numbering is consistent (1 to N, no gap or duplicate).')+'</div>';
   h+='<p class="note" style="margin:4px 0 8px">'+scT('Comparez chaque numéro à l\'image et corrigez si besoin. SW = soudure atelier, FW = soudure chantier. Le type SW/FW est une estimation (la forme du tampon ne compte pas) : vérifiez la lettre.','Compare each number with the picture and correct if needed. SW = shop weld, FW = field weld. The SW/FW type is an estimate (stamp shape does not matter): check the letter.')+'</p><div class="scstg">';
-  var order=p.stamps.map(function(x,i){return i;}).sort(function(a,b){var x=p.stamps[a],y=p.stamps[b],rk={S:0,SW:1,FW:2};return (rk[x.k]-rk[y.k])||((+x.n||0)-(+y.n||0));});
+  var order=p.stamps.map(function(x,i){return i;}).sort(function(a,b){var x=p.stamps[a],y=p.stamps[b],rk={S:0,SW:1,FW:1};return (rk[x.k]-rk[y.k])||((+x.n||0)-(+y.n||0))||(x.k<y.k?-1:x.k>y.k?1:0);});
   order.forEach(function(i){
     var x=p.stamps[i];
     h+='<div class="scsc'+(x.use?'':' off')+(x.k==='S'?' sp':'')+(x.th?'':' man')+'" data-pi="'+pi+'" data-si="'+i+'"><label class="scuse"><input type="checkbox" data-st="use"'+(x.use?' checked':'')+' aria-label="'+scT('Utiliser','Use')+'"></label>'+(x.th?'<img src="'+x.th+'" alt="">':'')+

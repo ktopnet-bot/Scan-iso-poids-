@@ -2,6 +2,11 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 3.8.0
+- Revue du scan : tampons triés par numéro de soudure (SW1, SW2, FW3, SW4…), spools en tête.
+- Liste de matériel : classe de bride lue correctement (3000# n'était plus pris pour 300#), vanne XV (type boisseau), boulonnerie (tiges + écrous → jeux de boulons selon la bride).
+- Bouton ✦ « Commande » : demande en langage courant (ex. « ne pas calculer la peinture des inox », « pas de peinture pour ISO-003 »). Règles de peinture sauvegardées avec le projet. Avec l'IA Claude (version publiée sur claude.ai) : aussi schedule, classe, matériau ; hors ligne / GitHub : règles locales (peinture).
+
 ## 3.7.1
 - Spools : un tronçon de tuyau séparé du reste par un trou du dessin (cartouche, repère) reprend le spool du tronçon voisin le plus proche (≤ 60 px), signalé en orange. Corrige SW4 sans spool (ISO 14/40). Soudure FW douteuse : repère du spool inférieur.
 
