@@ -3273,7 +3273,6 @@ function scReadPage(canvas,label){
   var res={label:label,line:'',doc:'',svc:'',cls:'',sheet:0,total:0,rows:[],raw:'',stamps:[]};
   try{res.stamps=scStampsRead(canvas);}catch(e){res.stamps=[];}
   try{var kk=Math.min(1,1500/canvas.width),pc=document.createElement('canvas');pc.width=Math.round(canvas.width*kk);pc.height=Math.round(canvas.height*kk);pc.getContext('2d').drawImage(canvas,0,0,pc.width,pc.height);res.img=pc.toDataURL('image/jpeg',0.6);}catch(e){res.img='';}
-  try{var k2=Math.min(1,2400/canvas.width),pb=document.createElement('canvas');pb.width=Math.round(canvas.width*k2);pb.height=Math.round(canvas.height*k2);pb.getContext('2d').drawImage(canvas,0,0,pb.width,pb.height);pb.toBlob(function(b){res.big=b;},'image/jpeg',0.85);}catch(e){}
   if(SC.noOcr)return Promise.resolve(res);
   return scReadPage0(canvas,label,res).catch(function(e){SC.noOcr=true;res.ocrErr=(e&&e.message)||'ocr';return res;});
 }
@@ -3371,7 +3370,6 @@ function scDraw(soft){
     h+='<details class="scpg" data-pi="'+pi+'"'+(p.open?' open':'')+'><summary><b>'+esc(scIsoName(p)||p.label)+'</b> <span class="scsub">'+esc(p.label)+' · '+n+' / '+p.rows.length+' '+scT('ligne(s)','line(s)')+'</span></summary>';
     h+='<div class="scfields">'+[['line',scT('ISO (ligne-feuille)','ISO (line-sheet)')],['doc',scT('Document N°','Document No.')],['svc','Service'],['cls','Pipe / class']].map(function(f){return '<label class="f">'+f[1]+'<input data-scp="'+pi+'" data-k="'+f[0]+'" value="'+esc(f[0]==='line'?scIsoName(p):p[f[0]])+'"></label>';}).join('')+'<label class="f">'+scT('Spool pour toutes','Spool for all')+'<input data-scall="'+pi+'" placeholder="ex. 1" inputmode="numeric"></label></div>';
     if(p.stamps)h+=scStampsHTML(p,pi);
-    h+='<div class="scai"><button type="button" class="btn primary" data-scai="'+pi+'"'+((scAIAvail()&&p.big&&!p.aiBusy)?'':' disabled')+'>✦ '+scT('Calculer les spools automatiquement (IA)','Compute the spools automatically (AI)')+'</button>'+(scAIAvail()?'':'<div class="note" style="margin-top:4px">'+scT('Disponible dans la version ouverte depuis claude.ai (l\'IA n\'est pas accessible depuis GitHub).','Available in the version opened from claude.ai (AI is not reachable from GitHub).')+'</div>')+(p.aiMsg?'<div class="scnote" style="background:var(--panel);border-color:var(--line);color:var(--ink)">'+esc(p.aiMsg)+((p.aiInc&&p.aiInc.length)?'<ul style="margin:6px 0 0 18px;padding:0">'+p.aiInc.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>':'')+'</div>':'')+'</div>';
     if(p.ocrErr)h+='<div class="scnote">⚠ '+scT('Liste de matériel non lue (outils de lecture indisponibles : vérifiez la connexion internet). Les spools et soudures ci-dessus ont été lus.','Material list not read (reading tools unavailable: check the internet connection). Spools and welds above were read.')+'</div>';
     h+='<datalist id="scsp'+pi+'">'+(p.stamps||[]).filter(function(x){return x.k==='S'&&x.use;}).map(function(x){return '<option value="'+esc(x.n)+'">';}).join('')+'</datalist>';
     if(!p.rows.length)h+='<p class="note">'+scT('Aucune ligne de matériel lue sur cette page.','No material line read on this page.')+'</p>';
@@ -3399,74 +3397,6 @@ function scDraw(soft){
   var keep=el.querySelector('.hbox'),st=keep?keep.scrollTop:0;el.innerHTML=h;el.className='on';var nb=el.querySelector('.hbox');if(nb&&soft)nb.scrollTop=st;
 }
 
-/* ---- calcul automatique des spools par IA (lecture du dessin) ---- */
-function scAIAvail(){return !!(window.claude&&window.claude.use);}
-function scAIPrompt(p){
-  var sp=[],wl={};(p.stamps||[]).forEach(function(x){if(!x.use||!(+x.n>0))return;if(x.k==='S'){if(sp.indexOf(+x.n)<0)sp.push(+x.n);}else{var k=String(x.sp||'?');(wl[k]=wl[k]||[]).push(x.k+x.n);}});
-  sp.sort(function(a,b){return a-b;});
-  var rows=p.rows.map(function(r){return {n:r.id,desc:r.desc,nd:r.ndTxt,qte:r.qteTxt};});
-  return 'Tu lis un isométrique de tuyauterie industrielle (image jointe : page entière, liste de matériel en haut à droite, cartouche en bas à droite).\n'+
-  'Objectif : donner, POUR CHAQUE SPOOL, les pièces et les longueurs de tube, afin de calculer poids et surface de peinture par spool.\n\n'+
-  'Données déjà lues par l\'application (fiables pour les tampons, à corriger si le dessin dit autre chose) :\n'+
-  '- Tampons Spool présents : '+(sp.join(', ')||'aucun lu')+'.\n'+
-  '- Soudures par spool (géométrie du dessin ; "?" = non déterminé) : '+(Object.keys(wl).sort().map(function(k){return 'spool '+k+' = '+wl[k].join(', ');}).join(' ; ')||'aucune')+'.\n'+
-  '- Liste de matériel lue par l\'application (peut contenir des erreurs ou être vide) : '+(rows.length?JSON.stringify(rows):'vide : lis-la sur l\'image')+'.\n\n'+
-  'Comment lire :\n'+
-  '- Les numéros dans des cases sur le dessin (ex. [3]) renvoient aux lignes de la liste de matériel. Les cases 1 et 2 sont en général les tubes (longueur totale en liste).\n'+
-  '- Un spool = ensemble de pièces soudées en atelier (SW), limité par les soudures chantier FW. Le tampon "Spool N°" est relié par un trait à une pièce du spool. Si une soudure FW est douteuse entre deux spools, prends le numéro le plus petit.\n'+
-  '- Les cotes (mm) sont écrites le long des tubes. Longueur d\'un tube = somme de ses cotes (ex. 125+125). L\'application déduit elle-même les encombrements selon ce qui est raccordé à chaque bout : indique pour chaque extrémité UNIQUEMENT ce qui est réellement soudé là : none (libre ou non précisé), brso (bride à souder SO), bride (bride WN), swel (coude forgé SW), swpq (le tube est soudé sur le côté d\'un autre tube, cote prise sur l\'axe de ce tube : donne alors nd2 = ND du tube principal), coude (coude BW), fond, te, red.\n'+
-  '- Un tube sans cote entre deux pièces est un nipple standard de 100 mm : cote "100".\n'+
-  '- Un chiffre isolé le long d\'une vanne (ex. 49) est la hauteur de la vanne, pas une longueur de tube.\n'+
-  '- Compte chaque pièce (bride, coude, vanne, olet, fond, joint, boulonnerie) dans le spool où elle est soudée. Si une pièce n\'a pas de soudure atelier (pièce libre, boulonnerie, joint), mets-la dans le spool de la bride voisine, ou dans le spool 0 si tu ne sais pas.\n'+
-  '- Si tu hésites, écris-le dans "incertain" au lieu d\'inventer.\n\n'+
-  'Réponds UNIQUEMENT par un JSON :\n{"bom":[{"n":"1","desc":"...","nd":"...","qte":"..."}],"spools":[{"n":1,"items":[{"row":"3","qty":1}],"tubes":[{"row":"1","nd":"2\\"","cote":"125+125","e1":"brso","e2":"none","nd2":"","commentaire":""}]}],"incertain":["..."]}\n'+
-  '"row" = numéro de ligne de la liste ; "items" = pièces autres que tubes ; "bom" = la liste telle que tu la lis.';
-}
-function scAIApply(p,ans){
-  var bom=ans.bom||[],ENDK=ENDS.map(function(o){return o[0];});
-  if(!p.rows.length&&bom.length){
-    p.rows=bom.map(function(b){var r={id:String(b.n),desc:b.desc||'',nd:b.nd||'',nd2:'',qte:b.qte||''},m=/^(.*?)\s*[xX×]\s*(.*)$/.exec(r.nd);if(m){r.nd=m[1];r.nd2=m[2];}
-      var mm=scMap(r);return {id:r.id,sec:'',desc:r.desc,ndTxt:b.nd,qteTxt:b.qte,ok:mm.ok,note:mm.note,item:mm.item,ndOk:mm.nd>=0,use:!!(mm.ok&&mm.item&&mm.nd>=0),spool:''};});
-    scFixRows(p.rows);
-  }
-  function find(id){return p.rows.filter(function(r){return String(r.id)===String(id)&&!r.ai;})[0];}
-  var out=[],used={},alloc={};
-  (ans.spools||[]).forEach(function(sp){
-    var sn=+sp.n>0?String(+sp.n):'';
-    (sp.items||[]).forEach(function(a){var r=find(a.row);if(!r||!r.item||r.item.cat==='tube')return;var c=JSON.parse(JSON.stringify(r));c.ai=true;c.spool=sn;c.item.qty=(+a.qty>0)?Math.round(+a.qty):1;c.note=(c.note?c.note+' · ':'')+scT('IA : à vérifier','AI: please check');out.push(c);used[r.id]=1;alloc[r.id]=(alloc[r.id]||0)+c.item.qty;});
-    (sp.tubes||[]).forEach(function(t){var r=find(t.row);if(!r||!r.item||r.item.cat!=='tube')return;var c=JSON.parse(JSON.stringify(r));c.ai=true;c.spool=sn;
-      var ix=scNdIx(t.nd);if(ix>=0){c.item.nps=ix;c.ndOk=true;}
-      var cote=String(t.cote||'').replace(/^=/,'').replace(/\s+/g,''),mm=scExpr(cote);
-      if(mm!=null&&mm>0){c.item.lenx='='+cote;c.item.len=String(Math.round(mm)/1000);}else{c.item.lenx='';c.item.len='';}
-      c.item.e1=ENDK.indexOf(t.e1)>=0?t.e1:'none';c.item.e2=ENDK.indexOf(t.e2)>=0?t.e2:'none';
-      var i2=scNdIx(t.nd2);if(i2>=0)c.item.nps2=i2;
-      c.note=(c.note?c.note+' · ':'')+scT('IA : à vérifier','AI: please check')+(t.commentaire?' — '+t.commentaire:'');
-      out.push(c);used[r.id]=1;alloc[r.id]=(alloc[r.id]||0)+(mm>0?mm/1000:0);});
-  });
-  p.rows.forEach(function(r){
-    if(r.ai)return;
-    if(!used[r.id]){r.note=(r.note?r.note+' · ':'')+scT('Non attribué par l\'IA : choisir le spool','Not assigned by the AI: choose the spool');out.push(r);}
-  });
-  /* total de la liste -> rappel réparti / reste */
-  var tot={};p.rows.forEach(function(r){if(!r.ai&&r.item)tot[r.id]=r.item.cat==='tube'?num(String(r.item.len||'').replace(',','.')):num(r.item.qty);});
-  out.forEach(function(r){if(r.ai&&tot[r.id]>0){r.grp='g'+r.id;r.tot=tot[r.id];}});
-  out.sort(function(a,b){return ((+a.spool||999)-(+b.spool||999))||((parseFloat(a.id)||0)-(parseFloat(b.id)||0));});
-  out.forEach(function(r){if(r.ai&&r.item.cat==='tube'&&!r.use&&r.ndOk)r.use=true;});
-  p.rows=out;
-  return (ans.incertain||[]).filter(Boolean);
-}
-function scAIRun(pi){
-  var p=SC.pages[pi];if(!p)return;
-  if(!p.big){toast(scT('Image de la page indisponible : relancez le scan','Page image unavailable: scan again'));return;}
-  p.aiMsg=scT('Lecture du dessin par l\'IA en cours… (jusqu\'à 1–2 min)','AI reading the drawing… (up to 1–2 min)');p.aiBusy=true;scDraw(true);
-  window.claude.use('sample').then(function(sm){
-    if(!sm)throw {code:'unavailable'};
-    return sm.json(scAIPrompt(p),{images:[p.big],modelTier:'complex',cache:false});
-  }).then(function(ans){
-    if(!ans||!Array.isArray(ans.spools))throw {code:'format'};
-    var inc=scAIApply(p,ans);p.aiBusy=false;p.aiMsg='✓ '+scT('Spools calculés par l\'IA : vérifiez chaque ligne (cotes, extrémités, spool).','Spools computed by the AI: check every line (dimensions, ends, spool).');p.aiInc=inc;scDraw(true);
-  }).catch(function(e){p.aiBusy=false;p.aiMsg=scT('Échec de l\'IA ('+((e&&(e.code||e.message))||'?')+'). Utilisez « Répartir par spool » à la main.','AI failed ('+((e&&(e.code||e.message))||'?')+'). Use "Split by spool" by hand.');scDraw(true);});
-}
 function scFixRows(rows){
     rows.forEach(function(r){if(r.item&&r.item.cat==='vanne'&&/^\s*XV\b/i.test(r.desc||'')){var o2=rows.filter(function(f){return f!==r&&f.item&&f.item.cat==='vanne'&&f.use;})[0]||rows.filter(function(f){return f!==r&&f.item&&f.use;})[0];if(o2)r.item.mk=o2.item.mk;}});
     rows.forEach(function(r){if(r.item&&r.item.cat==='boulon'){var fl=rows.filter(function(f){return f.item&&f.item.cat==='bride'&&f.use;})[0],bq=r.item._bq;delete r.item._bq;
@@ -3500,7 +3430,6 @@ document.addEventListener('click',function(e){var t=e.target;if(!t.closest)retur
   if(t.closest('#scstop')){SC.stop=true;return;}
   if(t.closest('#scadd')){var nos=0;SC.pages.forEach(function(p){var ss=(p.stamps||[]).filter(function(x){return x.use&&x.k==='S'&&+x.n>0;}).length;p.rows.forEach(function(r){if(r.use&&r.item&&!String(r.spool||'').trim()&&ss!==1&&!(r.grp&&!(r.item.cat==='tube'?num(String(r.item.len||'').replace(',','.'))>0:num(r.item.qty)>0)))nos++;});});
     if(nos)askConfirm(nos+scT(' ligne(s) sans spool : le poids et la peinture ne seront pas comptés par spool. Ajouter quand même ?',' line(s) without a spool: weight and paint will not be counted per spool. Add anyway?'),scT('Ajouter quand même','Add anyway'),scAdd);else scAdd();return;}
-  var aib=t.closest('[data-scai]');if(aib&&!aib.disabled){scAIRun(+aib.dataset.scai);return;}
   var sq=t.closest('[data-scsplit]');if(sq){var q2=sq.dataset.scsplit.split(':'),pg2=SC.pages[+q2[0]],r1=pg2&&pg2.rows[+q2[1]];
     if(r1&&r1.item){var nums=(pg2.stamps||[]).filter(function(x){return x.k==='S'&&x.use&&+x.n>0;}).map(function(x){return String(+x.n);}).filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return a-b;});
       if(!nums.length){toast(scT('Aucun spool lu : ajoutez d\'abord les tampons Spool','No spool read: add the Spool stamps first'));return;}

@@ -2,6 +2,15 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.1.0
+- Suppression du bouton IA de calcul des spools (non disponible sur GitHub). Méthode sans IA : règles de calcul (cotes à l'axe, encombrements) appliquées par l'application.
+
+## 4.0.2
+- Leçon corrigée : cotes à l'axe du coude/té, à la face de la bride WN ; exemples SP01 et SP02 (page 3/7).
+
+## 4.0.1
+- Leçon spool SP01 (page 3/7) intégrée à l'IA : points = SW, croix X = FW (limites), té et bride WN déduits.
+
 ## 4.0.0
 - Bouton « ✦ Calculer les spools automatiquement (IA) » par page : l'IA lit le dessin (liste, cotes, extrémités), répartit pièces et tubes par spool, avec cotes en expression et extrémités (bride SO, coude SW, piquage…). Résultat à vérifier ligne par ligne. Disponible uniquement dans la version ouverte depuis claude.ai (pas sur GitHub).
 
