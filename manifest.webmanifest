@@ -1,0 +1,43 @@
+{
+  "name": "Poids tuyauterie + scan",
+  "short_name": "Poids + scan",
+  "description": "Poids des tuyauteries avec lecture des isométriques scannés (tampons Spool, SW, FW).",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#edf1f3",
+  "theme_color": "#c62828",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "id": "./?app=poids-tuyauterie-2",
+  "categories": [
+    "utilities",
+    "productivity"
+  ]
+}
