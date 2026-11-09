@@ -2,6 +2,11 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.2
+- Onglet Soudure : visualisation seulement (pouces à souder et poids total du projet, par ISO, avec répartition atelier/chantier).
+- Suivi par spool (avancement par phase, pouces soudés, reste, tout soudé) déplacé dans l'onglet Soudure atelier (SW) et, séparément, dans l'onglet Soudure chantier (FW, avec poids à poser).
+- Excel : une page « Atelier (SW) » et une page « Chantier (FW) » (joints, pouces à souder / soudés / reste, avancement, poids du spool).
+
 ## 4.1
 - Onglets Soudure atelier (SW) / chantier (FW) : choix SW ou FW sur chaque soudure ; passer en FW la fait disparaître de l'onglet SW et l'affiche dans l'onglet FW (et inversement). Bouton « Recopier les joints de l'onglet Soudure » dans l'onglet SW (l'onglet Soudure reste inchangé).
 
