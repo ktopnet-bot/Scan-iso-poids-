@@ -2,56 +2,63 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
-## 4.1.1
+## 3.7
+Regroupe tous les changements depuis 3.6 (versions internes ci-dessous). Prochaine version : 3.8.
+
+### 4.2
+- Nouveau style d'isométrique : repères de spool SP01, SP02… (cadre rouge, texte vert, flèche rouge), points noirs = soudures atelier (SW), croix orange = soudures chantier (FW). Détection automatique, rattachement des soudures à leur spool (FW douteuse : spool le plus petit), numérotation des soudures par spool.
+- Numérotation des versions : 3.6, 3.7, 3.8…
+
+### 4.1.1
 - ND lu automatiquement dans la colonne ND de la liste en DN (20, 150, 150x20 → 3/4", 6", 6"x3/4"). Si illisible : ND de la ligne (début du nom de ligne, ex. 150-CS-…), signalé à vérifier.
 - Les supports de tuyauterie (PIPE SUPPORTS) sont ignorés : sans effet sur les poids.
 
-## 4.1.0
+### 4.1.0
 - Suppression du bouton IA de calcul des spools (non disponible sur GitHub). Méthode sans IA : règles de calcul (cotes à l'axe, encombrements) appliquées par l'application.
 
-## 4.0.2
+### 4.0.2
 - Leçon corrigée : cotes à l'axe du coude/té, à la face de la bride WN ; exemples SP01 et SP02 (page 3/7).
 
-## 4.0.1
+### 4.0.1
 - Leçon spool SP01 (page 3/7) intégrée à l'IA : points = SW, croix X = FW (limites), té et bride WN déduits.
 
-## 4.0.0
+### 4.0.0
 - Bouton « ✦ Calculer les spools automatiquement (IA) » par page : l'IA lit le dessin (liste, cotes, extrémités), répartit pièces et tubes par spool, avec cotes en expression et extrémités (bride SO, coude SW, piquage…). Résultat à vérifier ligne par ligne. Disponible uniquement dans la version ouverte depuis claude.ai (pas sur GitHub).
 
-## 3.9.0
+### 3.9.0
 - Poids et peinture par spool : bouton « Répartir par spool » sur chaque ligne de la liste (tube ou accessoire) : une ligne par spool de la page, avec rappel du total de la liste, du réparti et du reste. Avertissement avant d'ajouter des lignes sans spool.
 
-## 3.8.0
+### 3.8.0
 - Revue du scan : tampons triés par numéro de soudure (SW1, SW2, FW3, SW4…), spools en tête.
 - Liste de matériel : classe de bride lue correctement (3000# n'était plus pris pour 300#), vanne XV (type boisseau), boulonnerie (tiges + écrous → jeux de boulons selon la bride).
 - Bouton ✦ « Commande » : demande en langage courant (ex. « ne pas calculer la peinture des inox », « pas de peinture pour ISO-003 »). Règles de peinture sauvegardées avec le projet. Avec l'IA Claude (version publiée sur claude.ai) : aussi schedule, classe, matériau ; hors ligne / GitHub : règles locales (peinture).
 
-## 3.7.1
+### 3.7.1
 - Spools : un tronçon de tuyau séparé du reste par un trou du dessin (cartouche, repère) reprend le spool du tronçon voisin le plus proche (≤ 60 px), signalé en orange. Corrige SW4 sans spool (ISO 14/40). Soudure FW douteuse : repère du spool inférieur.
 
-## 3.7.0
+### 3.7.0
 - Lecture des numéros manuscrits réentraînée sur 27 pages relues à l'œil (≈360 tampons) : chiffres décrits sur 14×14 au lieu de 6×6, nouveau réseau, nouveau classement SW/FW. Numéros justes sur des pages jamais vues : 72 % → 85 %. Données d'apprentissage et scripts dans le dossier apprentissage/.
 
-## 3.6.6
+### 3.6.6
 - Icône et en-tête en rouge pour distinguer cette version (avec scan) de l'application sans scan.
 
-## 3.6.5
+### 3.6.5
 - Soudure FW située entre plusieurs spools : le scan retient le repère du spool inférieur (entre 2, 3 et 4 → 2), signalé en orange.
 
-## 3.6.4
+### 3.6.4
 - Longueur des tubes par spool : cotes en expression (=125+125), répartition d'un tube sur plusieurs spools, extrémités Bride SO (épaisseur), Coude forgé SW (cote A de la base B16.11) et Piquage sur tube (demi-Ø du ND principal), longueur nette affichée.
 
-## 3.6.3
+### 3.6.3
 - Les pastilles de joints (S1, S2…) deviennent J1, J2… pour ne plus être confondues avec les spools. Scan : si l'isométrique ne porte qu'un seul tampon Spool, toutes ses lignes reçoivent ce numéro. Champ spool vide affiché « — ».
 
-## 3.6.2
+### 3.6.2
 - Nouvelle icône (scanner + coude). Confirmation avant toute suppression (soudure, ligne, liste, projet). Repères de spool dans les onglets SW/FW (regroupement par spool, champ Spool à l'ajout). Paramètres isométrique : révision et code lus sur le cartouche, bouton pour copier vers les autres ISO.
+
+### 3.7 (version sans scan, autre dépôt)
+- Le scanner devient une application indépendante (« Scanner isométrique »). Ici : l'icône 📷 importe le fichier .json exporté par le scanner (lignes → Assemblage, soudures → onglets SW / FW). Code de lecture retiré (application plus légère).
 
 ## 3.6.1 (scan + spools)
 - Rattachement des soudures aux spools par la géométrie du dessin ; champ Spool modifiable par soudure, colonne Spool dans l'Excel et le .json.
-
-## 3.7 (version sans scan, autre dépôt)
-- Le scanner devient une application indépendante (« Scanner isométrique »). Ici : l'icône 📷 importe le fichier .json exporté par le scanner (lignes → Assemblage, soudures → onglets SW / FW). Code de lecture retiré (application plus légère).
 
 ## 3.6
 - Scanner : le type SW/FW ne dépend plus de la forme du tampon (estimation à vérifier) ; boutons « + Spool / + SW / + FW » pour les marques écrites à la main ; aperçu de la page scannée.
