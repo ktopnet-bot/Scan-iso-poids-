@@ -2,6 +2,15 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.1
+- Onglets Soudure atelier (SW) / chantier (FW) : choix SW ou FW sur chaque soudure ; passer en FW la fait disparaître de l'onglet SW et l'affiche dans l'onglet FW (et inversement). Bouton « Recopier les joints de l'onglet Soudure » dans l'onglet SW (l'onglet Soudure reste inchangé).
+
+## 4.0
+- Lecture du cartouche élargie : le numéro de ligne (ex. 100-V-31-133-6C1-PP, sous « LIGNE N° ») et le numéro de document sont cherchés sur toute la largeur du bas de page, puis en secours sur la page entière.
+
+## 3.9
+- Numéro d'iso lu comme DN-SERVICE-…-CLASSE-SYS (ex. 250-SHS-31-130-6C1-HC ou 100-V-31-133-6C1-PP) : service, pipe/class et SYS remplis automatiquement (scan, liste, exports Excel, projets existants). Le numéro de document (AR327-23-06-IS-000x) va dans « Document N° ». Nouveau champ SYS dans le scan ; service sur 1 à 4 lettres.
+
 ## 3.8
 - Pouces à souder (diamètre-pouces) : estimation par page d'après la liste de matériel (coude 2 soudures, té 3, bride WN/SO 1, olet 1, fond 1, réduction 2, vanne à souder 2 ; bride pleine et pièces filetées 0). Utile pour les isométriques sans repères de spool.
 
