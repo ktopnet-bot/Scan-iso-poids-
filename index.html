@@ -3127,6 +3127,9 @@ function scParseTitle(t){
 /* ---- lecture de la liste de matériel ---- */
 var SC_SEC=/^\W*(PIPE SUPPORTS?|SUPPORTS?|PIPE|FITTINGS?|OLETS?|FLANGES?|VALVES?|FASTENERS?|INSTRUMENTS?|SPECIALS?|GASKETS?)\W*$/i;
 function scNdRe(){return /(?:^|[\s|\]])((?:\d{1,2}\s)?\d{1,2}\/\d{1,2}|\d{1,2})\s?["”″°'’º]{1,2}(?:\s?[xX×]\s?((?:\d{1,2}\s)?\d{1,2}\/\d{1,2}|\d{1,2})\s?["”″°'’º]{1,2})?\s*[|\]]*\s*$/;}
+function scDnLabel(x){x=String(x||'').replace(/[Oo]/g,'0').replace(/[Il]/g,'1');var v=+x;if(!(v>0))return '';for(var i=0;i<NPS.length;i++)if(NPS[i].dn===v)return NPS[i].l;return '';}
+/* ND de la liste en DN (mm) : "150", "20", "150X20" -> ND en pouces de l'application */
+function scDnTail(rest){var m=/^\W*([0-9OoIl]{1,3})\s*(?:[xX×]\s*([0-9OoIl]{1,3}))?\W*$/.exec(rest||'');if(!m)return null;var a=scDnLabel(m[1]),b=m[2]?scDnLabel(m[2]):'';if(!a)return null;return {nd:a,nd2:b};}
 function scParseBom(text){
   var rows=[],sec='',last=null;
   String(text||'').split(/\r?\n/).forEach(function(raw){
@@ -3140,6 +3143,7 @@ function scParseBom(text){
       if(mm&&mm[1].length<=6&&rest.length>mm[0].length){qte=mm[1].trim();rest=rest.slice(0,rest.length-mm[0].length+0).replace(/[\s|\]]+$/,'');}
       mm=scNdRe().exec(rest);
       if(mm){nd=mm[1];nd2=mm[2]||'';rest=rest.slice(0,rest.length-mm[0].length).replace(/[\s|\]]+$/,'');}
+      else if(!/TIGE|GOUJON|STUD/i.test(rest)){mm=/(?:^|\s)([0-9OoIl]{1,3}(?:\s?[xX×]\s?[0-9OoIl]{1,3})?)\s*$/.exec(rest);var dn=mm&&scDnTail(mm[1]);if(dn){nd=dn.nd;nd2=dn.nd2;rest=rest.slice(0,rest.length-mm[0].length).replace(/[\s|\]]+$/,'');}}
       last={id:+m[1],sec:sec,desc:rest,nd:nd,nd2:nd2,qte:qte};rows.push(last);
     }else if(last&&/[A-Za-z]{4}/.test(l)&&!/^\W*\d/.test(l)){
       var add=l.replace(/\s+/g,' ').replace(/^[|\s]+|[|\s]+$/g,'');
@@ -3264,6 +3268,7 @@ function scRowsFromTable(items){
     if(mm&&mm[1].length<=6){qte=mm[1].trim();rest=rest.slice(0,rest.length-mm[0].length).replace(/[\s|\]]+$/,'');}
     mm=scNdRe().exec(rest);
     if(mm){nd=mm[1];nd2=mm[2]||'';}
+    else if(!/TIGE|GOUJON|STUD/i.test(o.desc)){var dn=scDnTail(rest);if(dn){nd=dn.nd;nd2=dn.nd2;}}
     rows.push({id:++n,sec:sec,desc:o.desc,nd:nd,nd2:nd2,qte:qte,tail:o.tail});
   });
   return rows;
@@ -3290,7 +3295,9 @@ function scReadPage0(canvas,label,res){
       return scOcr(scCrop(canvas,0.64,0,0.36,0.62,true,1.5),'6').then(function(bt){res.raw=bt;return scParseBom(bt);});
     });
   }).then(function(rws){
-    res.rows=rws.map(function(r){var m=scMap(r);return {id:r.id,sec:r.sec,desc:r.desc,ndTxt:r.nd+(r.nd2?'x'+r.nd2:''),qteTxt:r.qte,ok:m.ok,note:m.note,item:m.item,ndOk:m.nd>=0,use:!!(m.ok&&m.item&&(m.nd>=0)),spool:''};});
+    rws=rws.filter(function(r){return !(/SUPPORT/.test(r.sec||'')||/^\s*SUPP\b/i.test(r.desc||''));});
+    var ldn=/^\s*(\d{2,3})\s*[-–]/.exec(res.line||res.doc||''),lnd=ldn?scDnLabel(ldn[1]):'';
+    res.rows=rws.map(function(r){var fromLine=false;if(!r.nd&&lnd&&!/TIGE|GOUJON|STUD|JOINT|GASKET/i.test(r.desc||'')){r.nd=lnd;fromLine=true;}var m=scMap(r);if(fromLine&&m.item)m.note=(m.note?m.note+' · ':'')+scT('ND non lu : ND de la ligne utilisé, à vérifier','ND not read: line ND used, please check');return {id:r.id,sec:r.sec,desc:r.desc,ndTxt:r.nd+(r.nd2?'x'+r.nd2:''),qteTxt:r.qte,ok:m.ok,note:m.note,item:m.item,ndOk:m.nd>=0,use:!!(m.ok&&m.item&&(m.nd>=0)),spool:''};});
     scFixRows(res.rows);
     return res;
   });

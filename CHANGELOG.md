@@ -2,6 +2,10 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.1.1
+- ND lu automatiquement dans la colonne ND de la liste en DN (20, 150, 150x20 → 3/4", 6", 6"x3/4"). Si illisible : ND de la ligne (début du nom de ligne, ex. 150-CS-…), signalé à vérifier.
+- Les supports de tuyauterie (PIPE SUPPORTS) sont ignorés : sans effet sur les poids.
+
 ## 4.1.0
 - Suppression du bouton IA de calcul des spools (non disponible sur GitHub). Méthode sans IA : règles de calcul (cotes à l'axe, encombrements) appliquées par l'application.
 
