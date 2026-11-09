@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 3.8
+- Pouces à souder (diamètre-pouces) : estimation par page d'après la liste de matériel (coude 2 soudures, té 3, bride WN/SO 1, olet 1, fond 1, réduction 2, vanne à souder 2 ; bride pleine et pièces filetées 0). Utile pour les isométriques sans repères de spool.
+
 ## 3.7
 Regroupe tous les changements depuis 3.6 (versions internes ci-dessous). Prochaine version : 3.8.
 
