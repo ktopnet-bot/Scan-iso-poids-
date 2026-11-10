@@ -2,6 +2,14 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.7
+- Excel : suppression des onglets « Atelier (SW) » et « Chantier (FW) » (les onglets de suivi d'avancement et les listes de soudures restent).
+
+## 4.6
+- Base de données : nouvelle vanne « Vanne à boisseau sphérique à souder BW (B16.10) » (poids de vannes SLB, Pipedata). Points relevés en classe 300 : 4" = 53 kg (face à face 305, hauteur 200) et 10" = 396 kg (559, 300) ; autres tailles et classes interpolées, avec avertissement.
+- La boulonnerie n'est plus comptée dans les joints et les pouces à souder.
+- Le scan reconnaît « BW / butt weld » sur une vanne à boisseau.
+
 ## 4.5
 - Excel : deux onglets « Suivi avancement atelier » et « Suivi avancement chantier » (remplace « Avancement chantier »).
 - Un joint déplacé de SW vers FW garde son repère (S2 reste S2) ; il disparaît de l'atelier et s'affiche au chantier sous le même numéro.
