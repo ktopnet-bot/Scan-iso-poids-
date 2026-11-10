@@ -2,6 +2,10 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.5
+- Excel : deux onglets « Suivi avancement atelier » et « Suivi avancement chantier » (remplace « Avancement chantier »).
+- Un joint déplacé de SW vers FW garde son repère (S2 reste S2) ; il disparaît de l'atelier et s'affiche au chantier sous le même numéro.
+
 ## 4.4
 - Excel : nouvel onglet « Avancement chantier » (par spool : joints FW, pouces à souder / soudés / reste, avancement par phase, avancement global, poids à poser et poids posé, statut).
 
