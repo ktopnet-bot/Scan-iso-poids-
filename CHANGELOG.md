@@ -2,6 +2,12 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.9
+- Excel : les onglets « Suivi avancement atelier » et « Suivi avancement chantier » reprennent le modèle de l'onglet « Suivi des travaux » (bandeau d'indicateurs, pondération des phases, formules, barres de progression, statut). Atelier = spools SW, chantier = joints FW (poids posé).
+
+## 4.8
+- Les isométriques sont triées par numéro de page (P3, P4, P5 … P11, P12) dans les résultats, les spools, les soudures et le suivi, au lieu de l'ordre alphabétique du numéro de ligne.
+
 ## 4.7
 - Excel : suppression des onglets « Atelier (SW) » et « Chantier (FW) » (les onglets de suivi d'avancement et les listes de soudures restent).
 
