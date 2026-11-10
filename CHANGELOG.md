@@ -2,6 +2,13 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 4.4
+- Excel : nouvel onglet « Avancement chantier » (par spool : joints FW, pouces à souder / soudés / reste, avancement par phase, avancement global, poids à poser et poids posé, statut).
+
+## 4.3
+- Suivi par spool (onglets SW et FW) : chaque joint (S1, S2…) a un choix SW / FW. Passer un joint en FW le retire de l'atelier et l'ajoute au chantier (et inversement), avec le diamètre du joint.
+- Isométrique de plusieurs pages : chaque page est calculée séparément (suffixe -P3, -P4… quand le numéro de feuille n'est pas lu ou que deux pages ont le même nom).
+
 ## 4.2
 - Onglet Soudure : visualisation seulement (pouces à souder et poids total du projet, par ISO, avec répartition atelier/chantier).
 - Suivi par spool (avancement par phase, pouces soudés, reste, tout soudé) déplacé dans l'onglet Soudure atelier (SW) et, séparément, dans l'onglet Soudure chantier (FW, avec poids à poser).
