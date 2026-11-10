@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.0
+- Suivi par spool (onglets SW et FW) : cartes de soudure plus grandes et plus espacées (2 colonnes sur téléphone) ; le numéro et le diamètre sur une ligne, le choix SW/FW et une grande case « terminée » sur l'autre. Plus de chevauchement.
+
 ## 4.9
 - Excel : les onglets « Suivi avancement atelier » et « Suivi avancement chantier » reprennent le modèle de l'onglet « Suivi des travaux » (bandeau d'indicateurs, pondération des phases, formules, barres de progression, statut). Atelier = spools SW, chantier = joints FW (poids posé).
 
