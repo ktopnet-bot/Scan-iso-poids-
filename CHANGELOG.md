@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.8
+- Joints à souder : calcul automatique par pièce (chaque pièce compte ses extrémités soudées) : coude 2, té 3, réduction 2, fond 1, bride WN/SO/SW/LJ 1 (pleine et filetée 0), vanne à souder BW 2, forgé SW 2 (té 3, fond et demi-manchon 1), piquage 1 (fileté 0) ; tubes, vannes à brides et boulonnerie 0, pour ne pas compter deux fois le joint tube-raccord. La valeur « 1 joint imposé » mise par défaut sur les anciennes lignes est remplacée une fois par le calcul automatique ; les autres valeurs imposées sont conservées.
+
 ## 5.7
 - Onglet Soudure atelier (SW) : chaque joint calculé reçoit automatiquement une soudure numérotée (SW1, SW2… numéros uniques par isométrique, spool et diamètre repris du calcul), sans commande à lancer. Les numéros apparaissent dans la liste, modifiables avec la case N°. Une soudure supprimée à la main n'est pas recréée.
 
