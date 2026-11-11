@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.3
+- Onglets SW et FW : une soudure ajoutée à la main (formulaire « Ajouter une soudure ») est maintenant calculée : elle compte comme joint supplémentaire de son spool (pouces à souder, soudés, reste, avancement, poids), même si l'ISO ou le spool n'existe pas dans le Détail (le spool est alors créé automatiquement).
+
 ## 5.2
 - Onglets SW et FW : un seul tableau de soudures. La grille « Détail des soudures » (S1, S2…) du suivi par spool est supprimée ; on garde la liste lisible (FW1, FW2… avec Ø, spool, case « Réalisée »). Cocher une soudure met à jour automatiquement les pouces soudés et l'avancement du spool.
 
