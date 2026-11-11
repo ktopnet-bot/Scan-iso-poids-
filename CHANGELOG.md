@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.7
+- Onglet Soudure atelier (SW) : chaque joint calculé reçoit automatiquement une soudure numérotée (SW1, SW2… numéros uniques par isométrique, spool et diamètre repris du calcul), sans commande à lancer. Les numéros apparaissent dans la liste, modifiables avec la case N°. Une soudure supprimée à la main n'est pas recréée.
+
 ## 5.6
 - Onglets SW et FW : un numéro de soudure ne peut plus se répéter dans le même isométrique (SW et FW confondus) : refusé à l'ajout et à la modification du N° ; en cas de changement SW/FW, une soudure en conflit reçoit automatiquement le prochain numéro libre.
 
