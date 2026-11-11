@@ -2,6 +2,11 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.9
+- Scanner : repères de spool à texte noir dans un cadre rouge (« SP 01 »), croix orange de grande taille, traits fins et pâles (capture d'écran, photo JPEG), marges noires de capture rognées, images petites agrandies à 3300 px.
+- Scanner : un tuyau interrompu par une cote forme un seul groupe qui prend le spool de son repère ; une soudure chantier (croix) sépare deux spools : le tronçon non relié au tuyau connu passe à l'autre spool.
+- Scanner : répartition automatique des lignes de la liste entre les spools lus : tubes au prorata de la longueur dessinée de chaque spool, raccords au plus fort reste (estimation signalée sur chaque ligne, à vérifier).
+
 ## 5.8
 - Joints à souder : calcul automatique par pièce (chaque pièce compte ses extrémités soudées) : coude 2, té 3, réduction 2, fond 1, bride WN/SO/SW/LJ 1 (pleine et filetée 0), vanne à souder BW 2, forgé SW 2 (té 3, fond et demi-manchon 1), piquage 1 (fileté 0) ; tubes, vannes à brides et boulonnerie 0, pour ne pas compter deux fois le joint tube-raccord. La valeur « 1 joint imposé » mise par défaut sur les anciennes lignes est remplacée une fois par le calcul automatique ; les autres valeurs imposées sont conservées.
 
