@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.2
+- Onglets SW et FW : un seul tableau de soudures. La grille « Détail des soudures » (S1, S2…) du suivi par spool est supprimée ; on garde la liste lisible (FW1, FW2… avec Ø, spool, case « Réalisée »). Cocher une soudure met à jour automatiquement les pouces soudés et l'avancement du spool.
+
 ## 5.1
 - Onglets SW et FW : la grille « Détail des soudures » (suivi par spool) et la liste des soudures (FW1, FW2…) sont liées : cocher une soudure à un endroit la coche à l'autre (y compris « Tout soudé », « Tout marquer réalisé » et la saisie des pouces soudés). La liste détaillée par ISO est repliée par défaut.
 
