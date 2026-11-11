@@ -2,6 +2,15 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.6
+- Onglets SW et FW : un numéro de soudure ne peut plus se répéter dans le même isométrique (SW et FW confondus) : refusé à l'ajout et à la modification du N° ; en cas de changement SW/FW, une soudure en conflit reçoit automatiquement le prochain numéro libre.
+
+## 5.5
+- Onglets SW et FW : une case « N° » à côté du choix SW/FW de chaque soudure pour modifier son numéro (refusé si le numéro existe déjà pour cet ISO).
+
+## 5.4
+- Onglets SW et FW : le bouton « Recopier les joints de l'onglet Soudure » est supprimé. Nouveau bouton « Annuler la dernière action » (jusqu'à 40 actions : ajout, suppression, case réalisée, type SW/FW, diamètre, spool, pouces soudés, phases d'avancement).
+
 ## 5.3
 - Onglets SW et FW : une soudure ajoutée à la main (formulaire « Ajouter une soudure ») est maintenant calculée : elle compte comme joint supplémentaire de son spool (pouces à souder, soudés, reste, avancement, poids), même si l'ISO ou le spool n'existe pas dans le Détail (le spool est alors créé automatiquement).
 
