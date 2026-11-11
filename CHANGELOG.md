@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 5.1
+- Onglets SW et FW : la grille « Détail des soudures » (suivi par spool) et la liste des soudures (FW1, FW2…) sont liées : cocher une soudure à un endroit la coche à l'autre (y compris « Tout soudé », « Tout marquer réalisé » et la saisie des pouces soudés). La liste détaillée par ISO est repliée par défaut.
+
 ## 5.0
 - Suivi par spool (onglets SW et FW) : cartes de soudure plus grandes et plus espacées (2 colonnes sur téléphone) ; le numéro et le diamètre sur une ligne, le choix SW/FW et une grande case « terminée » sur l'autre. Plus de chevauchement.
 
