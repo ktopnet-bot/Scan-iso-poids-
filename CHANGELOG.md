@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.0
+- Scanner : les vignettes des repères de spool à texte noir montrent maintenant le cadre « SP nn » entier (cadre rouge détecté directement), au lieu d'un coin agrandi ou d'un texte coupé.
+
 ## 5.9
 - Scanner : repères de spool à texte noir dans un cadre rouge (« SP 01 »), croix orange de grande taille, traits fins et pâles (capture d'écran, photo JPEG), marges noires de capture rognées, images petites agrandies à 3300 px.
 - Scanner : un tuyau interrompu par une cote forme un seul groupe qui prend le spool de son repère ; une soudure chantier (croix) sépare deux spools : le tronçon non relié au tuyau connu passe à l'autre spool.
