@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.5
+- Vannes de diamètre ≤ 2" (à souder) : 2 joints de soudure comptés automatiquement (comme la vanne BW), donc 2 soudures créées par vanne 3/4" dans l'onglet Soudure. Repères du plan plus petits.
+
 ## 6.4
 - Scanner : chaque soudure affiche maintenant son spool (bandeau et liseré de la couleur du spool, cartes triées par spool) et un nouveau « Plan : soudures par spool » repère sur le dessin chaque soudure avec son numéro, dans la couleur de son spool (zoom + / −), pour valider l'appartenance au spool.
 
