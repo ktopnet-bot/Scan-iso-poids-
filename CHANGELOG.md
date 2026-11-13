@@ -2,6 +2,15 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.3
+- Scanner : lecture automatique des cotes. Les chiffres des cotes (police italique) sont détectés, redressés et lus par OCR chiffres seuls avec vote sur plusieurs inclinaisons. Chaque cote s'affiche avec sa vignette redressée, sa valeur (mm, modifiable), un ⚠ si la lecture est incertaine et le spool voisin ; « Créer les tubes » crée un tube par cote cochée avec le bon spool, à compléter avec les raccords d'extrémité (bloc « Cotes du spool »).
+
+## 6.2
+- Rapport par spool : nouveau bloc « Cotes du spool » sur chaque spool : on saisit chaque cote (mm) et les raccords aux deux extrémités (coude, té, bride WN, fond, réduction, piquage…) ; la longueur de coupe = cote − encombrement est calculée et alimente directement le poids, la peinture et les totaux. Exemple : 5926 − té 143 − coude 228 = 5555 mm (DN 150).
+
+## 6.1
+- Scanner : la répartition automatique des lignes par longueur dessinée (v5.9) est retirée : les isométriques ne sont pas à l'échelle (ex. cote 5926 dessinée plus courte que 623), elle donnait des longueurs de spool fausses. Les repères de spool et les soudures restent détectés ; les longueurs doivent venir des cotes.
+
 ## 6.0
 - Scanner : les vignettes des repères de spool à texte noir montrent maintenant le cadre « SP nn » entier (cadre rouge détecté directement), au lieu d'un coin agrandi ou d'un texte coupé.
 
