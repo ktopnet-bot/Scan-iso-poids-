@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.4
+- Scanner : chaque soudure affiche maintenant son spool (bandeau et liseré de la couleur du spool, cartes triées par spool) et un nouveau « Plan : soudures par spool » repère sur le dessin chaque soudure avec son numéro, dans la couleur de son spool (zoom + / −), pour valider l'appartenance au spool.
+
 ## 6.3
 - Scanner : lecture automatique des cotes. Les chiffres des cotes (police italique) sont détectés, redressés et lus par OCR chiffres seuls avec vote sur plusieurs inclinaisons. Chaque cote s'affiche avec sa vignette redressée, sa valeur (mm, modifiable), un ⚠ si la lecture est incertaine et le spool voisin ; « Créer les tubes » crée un tube par cote cochée avec le bon spool, à compléter avec les raccords d'extrémité (bloc « Cotes du spool »).
 
