@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.9
+- Onglet Assemblage : nouvelle « Vue rapide » (par défaut, bouton « Cartes » pour l'ancienne vue). Une ligne compacte par pièce, groupée par ISO puis par spool avec poids, surface, joints et pouces à souder de chaque spool ; quantité / longueur et n° de spool modifiables directement dans la ligne ; sélection multiple (case de la ligne ou du spool entier) puis affectation du spool en un geste (puces SP existants, « Nouveau SPnn », autre n°), dupliquer ou supprimer en lot ; « + Pièce » ajoute une pièce directement dans un spool ; toucher le nom ouvre la fiche complète.
+
 ## 6.8
 - Joints de soudure : weldolet et sockolet comptent 2 joints (soudure sur le tube + sur la branche), threadolet 1 ; les vannes à souder (SW/BW dans la désignation) comptent 2 joints quel que soit le diamètre ; manchons SW 2 joints.
 - Scanner : il ne disparaît plus jamais sans ordre. Il se rouvre automatiquement avec le dernier scan s'il disparaît (rechargement de la page, retour de l'appareil photo ou du sélecteur de fichier, manque de mémoire) ; seule la croix × le ferme. Le scan est sauvegardé après chaque page lue.
