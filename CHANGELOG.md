@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.7
+- Correction : le scanner affichait « Erreur de lecture : Cannot read properties of undefined (reading 'then') » depuis la 6.6 (la nouvelle fonction de rétablissement du scan portait le même nom que le chargeur d'outils de lecture). Renommée.
+
 ## 6.6
 - Scanner : il ne se ferme plus tout seul (ni en touchant à côté, ni avec Échap, ni après « Ajouter ») : seule la croix le ferme.
 - Scan enregistré et lié au projet : le dernier scan est sauvegardé (IndexedDB) et rétabli à la réouverture, même après rechargement. Les lignes et soudures ajoutées (🔗) restent liées : les modifications faites dans les autres onglets (quantité, spool, numéro de soudure, suppression) sont reprises dans le scanner à chaque ouverture, et le bouton « Mettre à jour le projet » met à jour sans créer de doublons.
