@@ -2,6 +2,11 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.6
+- Scanner : il ne se ferme plus tout seul (ni en touchant à côté, ni avec Échap, ni après « Ajouter ») : seule la croix le ferme.
+- Scan enregistré et lié au projet : le dernier scan est sauvegardé (IndexedDB) et rétabli à la réouverture, même après rechargement. Les lignes et soudures ajoutées (🔗) restent liées : les modifications faites dans les autres onglets (quantité, spool, numéro de soudure, suppression) sont reprises dans le scanner à chaque ouverture, et le bouton « Mettre à jour le projet » met à jour sans créer de doublons.
+- Plan des soudures : le zoom fonctionne maintenant sur téléphone (le plan n'était plus agrandi).
+
 ## 6.5
 - Vannes de diamètre ≤ 2" (à souder) : 2 joints de soudure comptés automatiquement (comme la vanne BW), donc 2 soudures créées par vanne 3/4" dans l'onglet Soudure. Repères du plan plus petits.
 
