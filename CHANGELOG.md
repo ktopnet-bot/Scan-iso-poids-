@@ -2,6 +2,10 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 6.8
+- Joints de soudure : weldolet et sockolet comptent 2 joints (soudure sur le tube + sur la branche), threadolet 1 ; les vannes à souder (SW/BW dans la désignation) comptent 2 joints quel que soit le diamètre ; manchons SW 2 joints.
+- Scanner : il ne disparaît plus jamais sans ordre. Il se rouvre automatiquement avec le dernier scan s'il disparaît (rechargement de la page, retour de l'appareil photo ou du sélecteur de fichier, manque de mémoire) ; seule la croix × le ferme. Le scan est sauvegardé après chaque page lue.
+
 ## 6.7
 - Correction : le scanner affichait « Erreur de lecture : Cannot read properties of undefined (reading 'then') » depuis la 6.6 (la nouvelle fonction de rétablissement du scan portait le même nom que le chargeur d'outils de lecture). Renommée.
 
