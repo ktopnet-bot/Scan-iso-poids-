@@ -2,6 +2,17 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 7.2
+- Réductions et tés réduits : la liste « NPS réduit » ne contient plus que les combinaisons ASME B16.9 (suppression du groupe « Hors liste »). Une valeur déjà saisie hors liste reste affichée avec un avertissement.
+
+## 7.1
+- CORRECTION IMPORTANTE réductions : le poids était sous-estimé (24"×16" : 59,5 kg au lieu de 72,00 kg Pipedata ; 10"×4" : 6,8 kg au lieu de 10,70 kg). Nouveau calcul : coque conique avec la paroi du gros bout, coefficient calé sur Pipedata et sur les tableaux fabricants (écart ≤ 5 % : 10×8 = 11,87 kg, 12×6 = 15,36 kg, 6×4 = 4,15 kg) ; les deux valeurs Pipedata vérifiées (SCH STD) sont reprises exactement.
+- Tailles : les listes « NPS réduit » des réductions et des tés réduits ne proposent plus que les combinaisons existantes ASME B16.9 (ex. 24" : 20, 18, 16 pour les réductions ; 24"×1/2" n'existe plus). Les autres tailles restent accessibles dans un groupe « Hors liste ASME B16.9 (à confirmer) » avec un avertissement. Changer le gros diamètre ramène automatiquement le petit à la taille existante la plus proche.
+- Tés réduits : la longueur de branche utilise la cote M du tableau ASME B16.9 (corps C et piquage M) au lieu d'une moyenne.
+
+## 7.0
+- Joints à diamètres différents : une réduction 10"×8" compte 1 joint Ø10 + 1 joint Ø8 (18 po-diam. au lieu de 20) ; un té réduit compte 2 joints sur la ligne + 1 sur la branche. Pris en compte dans la fiche pièce (« 10 + 8 po »), les soudures créées par spool (Ø de chaque joint), le rapport par spool et les exports.
+
 ## 6.9
 - Onglet Assemblage : nouvelle « Vue rapide » (par défaut, bouton « Cartes » pour l'ancienne vue). Une ligne compacte par pièce, groupée par ISO puis par spool avec poids, surface, joints et pouces à souder de chaque spool ; quantité / longueur et n° de spool modifiables directement dans la ligne ; sélection multiple (case de la ligne ou du spool entier) puis affectation du spool en un geste (puces SP existants, « Nouveau SPnn », autre n°), dupliquer ou supprimer en lot ; « + Pièce » ajoute une pièce directement dans un spool ; toucher le nom ouvre la fiche complète.
 
