@@ -2,6 +2,34 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.0
+- Correction : le pied de page affichait « Version 6.2 » en dur alors que l'en-tête indiquait la version réelle ; il suit maintenant automatiquement la version de l'application (FR et EN).
+
+## 7.9
+- Vannes : 12 nouveaux points Pipedata. Boisseau sphérique cl.300 : 2" = 20, 4" = 76, 8" = 367 kg ; cl.600 : 4" = 98, 8" = 577 kg (le pattern court 8" cl.300 = 294 kg est retrouvé). Clapet à battant cl.150 : 2" = 19, 8" = 133, 12" = 347 kg ; cl.300 : 2" = 21, 8" = 213 kg. Poids du boisseau maintenant interpolé par classe à partir de ses propres points Pipedata.
+- Face RTJ disponible aussi en classe 150 : face à face RF + 13 mm (Pipedata, clapet 12").
+
+## 7.8
+- Vannes à opercule : 20 nouveaux points Pipedata (SLB). Classe 150 : 1" = 10, 1½" = 18, 2" = 18, 2½" = 28, 3" = 34, 4" = 52, 5" = 71, 6" = 88, 8" = 144, 10" = 197, 12" = 298, 14" = 406, 16" = 524, 24" = 1466 kg. Classe 600 : ½" = 5, ¾" = 10, 1" = 15, 1½" = 27, 4" = 120, 5" = 190 kg. Les tailles intermédiaires (1¼", 18", 20", ½" et ¾" en cl.150/300) sont interpolées entre les points mesurés.
+
+## 7.7
+- Vannes à brides : nouveau choix « Face de bride » RF / RTJ (RTJ à partir de la classe 300). Le face à face RTJ = RF + 16 mm (cl.300 et 1500) ou + 3 mm (cl.600 et 900), relevé dans Pipedata ; le poids reste identique. Visible dans la désignation, la fiche et le dessin.
+- 14 nouveaux points Pipedata (SLB) : opercule cl.300 (2" = 24, 3" = 52, 4" = 76, 8" = 218, 10" = 352, 12" = 472 kg), opercule 12" cl.600 = 981 / cl.900 = 1550 / cl.1500 = 3244 kg, clapet à battant 6" cl.600 = 227 kg, boisseau sphérique cl.150 (6" = 227, 8" = 321, 14" = 1020 kg). Coefficients de classe 900/1500 recalés (1,58 / 3,31).
+
+## 7.6
+- Vannes : 12 nouveaux points Pipedata (SLB) : globe cl.600 (2" = 57, 3" = 89, 4" = 149, 6" = 417, 8" = 542, 12" = 900 kg) ; boisseau sphérique 12" (cl.150 = 781, cl.300 = 873, cl.600 = 1339, cl.900 = 1523 kg). Coefficients de classe du boisseau recalés (1,12 / 1,71 / 1,95) ; pattern court = 80 % du pattern long (Pipedata : 698,4 kg pour 873 kg).
+
+## 7.5
+- Vannes : 12 points Pipedata (SLB) repris exactement : boisseau sphérique 4" = 55 kg et 10" = 519 kg (cl.150), opercule 4" = 52 kg et 10" = 197 kg (cl.150), globe 10" cl.150 = 308 kg, globe cl.300 4" = 86 / 10" = 527 / 12" = 608 kg, clapet à battant 4" cl.150 = 48 kg, 4" cl.300 = 61 kg, 12" cl.300 = 449 kg. Les autres tailles sont recalées sur ces points.
+
+## 7.4
+- VANNES à brides refondues (ASME B16.10) : le face à face dépend maintenant du type de vanne (opercule, globe, clapet à battant, clapet à piston, boisseau sphérique pattern long ou court, robinet à boisseau conique) et de la classe. Ex. boisseau sphérique 10" cl.150 : 533 mm (avant : 330 mm de la vanne à opercule), identique à Pipedata.
+- Poids : tableaux par taille et classe (opercule, globe, clapet cl.150/300/600, valeurs indicatives wermac) au lieu d'un coefficient unique ; boisseau sphérique calé sur Pipedata 10" cl.150 = 519 kg (avant : 156,75 kg). Valeurs non tabulées (petites tailles, classes 900/1500, autres types) estimées, avec avertissement.
+- Nouveaux types : clapet à piston (lift), boisseau sphérique pattern court, robinet à boisseau conique (plug). Corrigé : face à face de l'opercule cl.300 de 14" à 24" (valeurs de l'opercule à coin, pas du conduit).
+
+## 7.3
+- Poids des raccords calés sur le catalogue Trouvay Cauvin (ASME B16.9, SCH STD) : tés égaux (+13 à +45 % selon la taille, écart désormais 0 %), coudes 90° GR, 45° GR et retours 180° (écart 0 %). Les tés réduits utilisent le même coefficient du gros diamètre. Autres schedules : même coefficient appliqué.
+
 ## 7.2
 - Réductions et tés réduits : la liste « NPS réduit » ne contient plus que les combinaisons ASME B16.9 (suppression du groupe « Hors liste »). Une valeur déjà saisie hors liste reste affichée avec un avertissement.
 
