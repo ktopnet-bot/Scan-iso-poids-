@@ -2,6 +2,13 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.2
+- Supprimer un projet efface maintenant toutes ses données pour libérer l'espace : lignes, soudures, dernier scan, archives du scanner et images. La confirmation prévient que c'est définitif (plus de passage par la corbeille).
+- Corbeille (projets supprimés avant cette version) : nouveaux boutons « Supprimer définitivement » et « Vider la corbeille » qui effacent aussi les données du scanner.
+
+## 8.1
+- Nouvel onglet « Scanner (archives) » : chaque page d'isométrique lue par le scanner est conservée automatiquement dans le projet (lignes, spools, soudures, image de la page), même si un autre dessin est scanné ensuite. Pour chaque page : miniature, date, nombre de lignes, spools et soudures ; boutons Ouvrir dans le scanner, Aperçu de la page, Supprimer ; recherche par ISO, document ou service. Stockage dans la mémoire du navigateur (IndexedDB), par projet.
+
 ## 8.0
 - Correction : le pied de page affichait « Version 6.2 » en dur alors que l'en-tête indiquait la version réelle ; il suit maintenant automatiquement la version de l'application (FR et EN).
 
