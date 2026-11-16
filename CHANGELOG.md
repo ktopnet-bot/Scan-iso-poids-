@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.7
+- Scanner : repères numérotés dans l'ordre du tracé ; 2e passe plus sensible s'il manque des points ; points isolés écartés en premier en cas de surplus ; un long tuyau vertical n'est plus pris pour le cadre ; repères parfaitement alignés sur l'image agrandie.
+
 ## 8.6
 - Détection des points de soudure refaite pour les PDF vectoriels (cahier d'isométriques PIRECO) : un point de soudure est un renflement net sur le trait épais de la tuyauterie, mesuré par rapport à l'épaisseur du trait voisin. Les pointes de flèche (sens d'écoulement), vannes, brides, cadre, cartouche et texte posé sur le trait sont écartés.
 
