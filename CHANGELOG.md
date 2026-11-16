@@ -2,6 +2,10 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.5
+- Scanner : aucun repère de soudure n'est ajouté sur une page sans liste de matériel (page de garde, plan seul…). Cette page reçoit seulement un numéro « Page n° N », n'est pas prise en charge et n'est pas archivée.
+- Les repères automatiques ne dépassent jamais le nombre de joints de la liste de matériel (coude 2, té 3, réduction 2, fond 1, bride 1, WOL 1, vanne à souder 2 ; fileté = 0). Un contrôle « joints selon la liste / repères actifs » s'affiche sous l'aperçu de la page.
+
 ## 8.4
 - La barre d'onglets reste toujours affichée en haut de l'écran pendant le défilement.
 
