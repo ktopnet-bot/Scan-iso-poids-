@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.6
+- Détection des points de soudure refaite pour les PDF vectoriels (cahier d'isométriques PIRECO) : un point de soudure est un renflement net sur le trait épais de la tuyauterie, mesuré par rapport à l'épaisseur du trait voisin. Les pointes de flèche (sens d'écoulement), vannes, brides, cadre, cartouche et texte posé sur le trait sont écartés.
+
 ## 8.5
 - Scanner : aucun repère de soudure n'est ajouté sur une page sans liste de matériel (page de garde, plan seul…). Cette page reçoit seulement un numéro « Page n° N », n'est pas prise en charge et n'est pas archivée.
 - Les repères automatiques ne dépassent jamais le nombre de joints de la liste de matériel (coude 2, té 3, réduction 2, fond 1, bride 1, WOL 1, vanne à souder 2 ; fileté = 0). Un contrôle « joints selon la liste / repères actifs » s'affiche sous l'aperçu de la page.
