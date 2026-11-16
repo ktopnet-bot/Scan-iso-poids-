@@ -2,6 +2,12 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.4
+- La barre d'onglets reste toujours affichée en haut de l'écran pendant le défilement.
+
+## 8.3
+- Scanner : si un isométrique ne porte aucun repère de soudure, les points noirs pleins sur la ligne (soudures atelier) sont détectés et numérotés automatiquement. Ils s'affichent sur l'image de la page : toucher un repère pour le masquer, « + Ajouter un repère », « Renuméroter ».
+
 ## 8.2
 - Supprimer un projet efface maintenant toutes ses données pour libérer l'espace : lignes, soudures, dernier scan, archives du scanner et images. La confirmation prévient que c'est définitif (plus de passage par la corbeille).
 - Corbeille (projets supprimés avant cette version) : nouveaux boutons « Supprimer définitivement » et « Vider la corbeille » qui effacent aussi les données du scanner.
