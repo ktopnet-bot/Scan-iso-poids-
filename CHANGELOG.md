@@ -2,6 +2,13 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.3
+- Les diamètres soudés / bridés des lignes à description étrange sont maintenant comptés dans les totaux : joints et pouces à souder du rapport par spool et des onglets Soudure atelier / chantier (rattachés au premier spool de l'ISO).
+
+## 9.2
+- Soudures : la case Ø est une liste déroulante qui ne propose que les diamètres cités dans la liste de matériel de l'ISO concerné (1/2, 3/4, 1, 2, 3, 4, 6…). Un Ø absent de la liste s'affiche « — ».
+- Scanner : une ligne de liste à désignation étrange (non reconnue) mais avec un diamètre lisible et un mot soudure / bride est reprise : son diamètre soudé ou bridé s'ajoute à la liste des pouces à souder estimée et aux diamètres proposés.
+
 ## 9.1
 - Soudures ajoutées depuis le scanner : le diamètre (Ø) vient maintenant de la ligne principale (tube le plus long), plus du premier tube de la liste (qui pouvait être une petite dérivation, d'où des Ø 0,75 faux). Si le nombre de soudures égale le nombre de joints de la liste, les Ø suivent la liste (coudes, brides, réductions…). Un Ø saisi à la main n'est plus écrasé. Un message signale quand le nombre de soudures diffère du nombre de joints de la liste.
 
