@@ -2,6 +2,12 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.8
+- Nouvel onglet « Créer spools » : ISO (filtre ISO + page), description (liste déroulante des pièces sans spool avec la quantité restante), quantité ou longueur en m pour un tube, n° de spool. Un tube se répartit sur plusieurs spools (la longueur est découpée). Cases à cocher pour affecter plusieurs pièces d'un coup, bouton Retirer, récapitulatif par spool (pièces, joints, po, kg). Les soudures et leurs cases cochées suivent leur spool.
+
+## 9.7
+- Soudure atelier : le total « Pouces soudés x / y » du haut de l'onglet est calculé sur la liste de matériel (même total que le suivi par spool et le rapport), même si un Ø de soudure a été modifié à la main.
+
 ## 9.6
 - Mêmes nombres dans tous les onglets : joints et pouces à souder viennent de la liste de matériel (y compris les lignes à description étrange) dans Assemblage, Rapport par spool, Soudure, Soudure atelier / chantier et exports. La liste des soudures contient une soudure par joint de la liste (SW1…SWn) et ses Ø suivent la liste, sauf un Ø saisi à la main.
 
