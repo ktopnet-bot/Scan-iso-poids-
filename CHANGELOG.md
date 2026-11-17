@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.6
+- Mêmes nombres dans tous les onglets : joints et pouces à souder viennent de la liste de matériel (y compris les lignes à description étrange) dans Assemblage, Rapport par spool, Soudure, Soudure atelier / chantier et exports. La liste des soudures contient une soudure par joint de la liste (SW1…SWn) et ses Ø suivent la liste, sauf un Ø saisi à la main.
+
 ## 9.5
 - Filtre ISO en deux cases : « ISO » (nom sans le -P#) et « Page » (P3, P4…), dans Soudure atelier / chantier et dans Rapport par spool. La liste des pages ne montre que les pages de l'ISO choisi.
 
