@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.1
+- Soudures ajoutées depuis le scanner : le diamètre (Ø) vient maintenant de la ligne principale (tube le plus long), plus du premier tube de la liste (qui pouvait être une petite dérivation, d'où des Ø 0,75 faux). Si le nombre de soudures égale le nombre de joints de la liste, les Ø suivent la liste (coudes, brides, réductions…). Un Ø saisi à la main n'est plus écrasé. Un message signale quand le nombre de soudures diffère du nombre de joints de la liste.
+
 ## 9.0
 - Scanner : Déplacement précis des repères : touchez un repère pour le sélectionner (cercle bleu/rouge, le centre = la soudure), puis touchez le dessin à l'endroit exact ou réglez avec les flèches ▲▼◀▶ (rester appuyé = continu). Boutons Zoom − / Zoom +. Le glissement ne fait plus « sauter » le repère sous le doigt, et le menu « image » du navigateur ne s'ouvre plus en appuyant longuement.
 
