@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.0
+- Scanner : Déplacement précis des repères : touchez un repère pour le sélectionner (cercle bleu/rouge, le centre = la soudure), puis touchez le dessin à l'endroit exact ou réglez avec les flèches ▲▼◀▶ (rester appuyé = continu). Boutons Zoom − / Zoom +. Le glissement ne fait plus « sauter » le repère sous le doigt, et le menu « image » du navigateur ne s'ouvre plus en appuyant longuement.
+
 ## 8.9
 - Scanner : bouton « Déplacer les repères » (glisser chaque repère à sa place exacte sur le dessin, valable pour chaque isométrique).
 
