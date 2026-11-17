@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.4
+- Scanner : Joints manquants : quand le scanner trouve moins de points de soudure que de joints dans la liste de matériel (ex. 6 repères pour 20 joints), il crée les repères manquants (SW7…SW20), en orange, rangés en haut du dessin. Placez-les avec « Déplacer les repères ». Bouton « + Compléter les n repère(s) manquant(s) » pour les ajouter sur un scan déjà fait. Les pouces à souder restent calculés d'après la liste de matériel.
+
 ## 9.3
 - Les diamètres soudés / bridés des lignes à description étrange sont maintenant comptés dans les totaux : joints et pouces à souder du rapport par spool et des onglets Soudure atelier / chantier (rattachés au premier spool de l'ISO).
 
