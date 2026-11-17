@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.9
+- Scanner : bouton « Déplacer les repères » (glisser chaque repère à sa place exacte sur le dessin, valable pour chaque isométrique).
+
 ## 8.8
 - Scanner : suivi du tracé plus robuste pour numéroter les repères dans l'ordre (comble les petits trous, autres résolutions) ; avertissement si un scan restauré vient d'une ancienne version de la détection.
 
