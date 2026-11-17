@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 8.8
+- Scanner : suivi du tracé plus robuste pour numéroter les repères dans l'ordre (comble les petits trous, autres résolutions) ; avertissement si un scan restauré vient d'une ancienne version de la détection.
+
 ## 8.7
 - Scanner : repères numérotés dans l'ordre du tracé ; 2e passe plus sensible s'il manque des points ; points isolés écartés en premier en cas de surplus ; un long tuyau vertical n'est plus pris pour le cadre ; repères parfaitement alignés sur l'image agrandie.
 
