@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.9
+- Créer spools : les tubes ont l'icône et les deux extrémités (libre, bride, coude, té, fond, réduction…) comme dans Assemblage, avec la longueur de coupe ; les extrémités se règlent à l'ajout et sur chaque morceau. Les coudes et autres accessoires ont un réglage « Joints à souder par pièce dans ce spool » (auto, 0 à 4), modifiable à l'ajout et ensuite ; les totaux de joints, pouces et soudures suivent.
+
 ## 9.8
 - Nouvel onglet « Créer spools » : ISO (filtre ISO + page), description (liste déroulante des pièces sans spool avec la quantité restante), quantité ou longueur en m pour un tube, n° de spool. Un tube se répartit sur plusieurs spools (la longueur est découpée). Cases à cocher pour affecter plusieurs pièces d'un coup, bouton Retirer, récapitulatif par spool (pièces, joints, po, kg). Les soudures et leurs cases cochées suivent leur spool.
 

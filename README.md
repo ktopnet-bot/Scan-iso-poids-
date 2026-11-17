@@ -2,7 +2,7 @@
 
 Application web pour calculer le poids des tuyauteries : tubes, raccords, brides, vannes. Elle fonctionne dans le navigateur, sans serveur et sans installation. Les données restent sur l'appareil.
 
-**Créé par Kamel Nasralli** · Version 9.8 (scan + spools) · Licence MIT
+**Créé par Kamel Nasralli** · Version 9.9 (scan + spools) · Licence MIT
 
 ## Fonctionnalités
 
