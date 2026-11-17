@@ -2,6 +2,9 @@
 
 Numérotation : X.Y (par exemple 2.0).
 
+## 9.5
+- Filtre ISO en deux cases : « ISO » (nom sans le -P#) et « Page » (P3, P4…), dans Soudure atelier / chantier et dans Rapport par spool. La liste des pages ne montre que les pages de l'ISO choisi.
+
 ## 9.4
 - Scanner : Joints manquants : quand le scanner trouve moins de points de soudure que de joints dans la liste de matériel (ex. 6 repères pour 20 joints), il crée les repères manquants (SW7…SW20), en orange, rangés en haut du dessin. Placez-les avec « Déplacer les repères ». Bouton « + Compléter les n repère(s) manquant(s) » pour les ajouter sur un scan déjà fait. Les pouces à souder restent calculés d'après la liste de matériel.
 
